@@ -1,5 +1,4 @@
 import smtplib
-import ssl
 from email.message import EmailMessage
 
 
@@ -119,7 +118,8 @@ class EmailSender:
                 """
                 self.mail_html += self.html_template
         
-        with open("test.html", "w", encoding="utf-8") as f:
+        # If communication with mail server fail we still have saved data
+        with open("Last_24_hours_search.html", "w", encoding="utf-8") as f:
             f.write(self.mail_html)
         
         return self.mail_html
